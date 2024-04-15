@@ -1,0 +1,35 @@
+<div class="myAppointments">
+    <div class="container mt-1">
+        <h2 class="mb-4 text-center ">Patient Details</h2>
+        <div class=" row px-2">
+            <div class="mb-1 col-lg-7">
+                <h3><span id="name">
+                        <%= user.name%>
+                    </span></h3>
+                <p>Contact: <span id="number">
+                        <%= user.contact%>
+                    </span></p>
+            </div>
+            <div class="col-lg-5 d-flex justify-content-end">
+                <a href="/booking" class="me-5"><button class="btn btn-primary">Book Appointment</button></a>
+                <form action="/logout" method="GET">
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive booked-appointments">
+            <table class="table table-bordered text-center" id="appointment_table">
+                <thead>
+                    <th>Sr No.</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Appointment Date</th>
+                    <th scope="col">Appointment Time</th>
+                    <th scope="col">Status</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>

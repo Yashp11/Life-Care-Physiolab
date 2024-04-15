@@ -1,0 +1,17 @@
+.icon{
+    font-size: 80px;
+}
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(248, 215, 218,0.5);
+}
+.alert-box{
+    font-family: 'Exo',sans-serif;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+}

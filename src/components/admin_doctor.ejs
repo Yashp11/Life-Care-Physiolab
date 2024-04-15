@@ -1,0 +1,37 @@
+<div class="table-responsive">
+    <table
+        class="table table-bordered table-striped text-center "
+        id="appointment-table"
+    >
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contact No.</th>
+                <th scope="col">Specility</th>
+                <th scope="col">Experience</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% doctors.forEach(doctor => { %>
+            <tr>
+                <td><%= doctor.name %></td>
+                <td><%= doctor.email %></td>
+                <td><%= doctor.contact %></td>
+                <td><%= doctor.spciality %></td>
+                <td><%= doctor.experience %> Years</td>
+                
+                <td class="d-flex justify-content-around">
+                    <button
+                        class="btn btn-primary me-3 "
+                        onclick="data_delete(`<%= doctor._id%>`,'doctor')"
+                    >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>

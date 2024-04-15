@@ -1,0 +1,55 @@
+.nav-item:hover{
+    background-color:#D2E9E9;
+    border : 1px solid #D2E9E9;
+    border-radius: .25rem;
+}
+
+.sidebar{
+   background-color: #E3F4F4;
+   height: 100vh;
+}
+.dashbord{
+    background-color: #F8F6F4;
+    /* background-color: #AD88C6; */
+}
+.header{
+    background-color: #E3F4F4;
+    font-size: 30px;
+    font-weight: bolder;
+    padding:16px 0px
+}
+.nav{
+    padding-top:60px;
+}
+#content{
+    height : 100vh;
+    padding: 24px;
+}
+.col-lg-10{
+    padding-left: 0px !important;
+}
+.card{
+    background-color:#C4DFDF;
+    border-color: #C4DFDF;
+}
+.icon{
+    border-radius:50%;
+    height : fit-content;
+    width: fit-content;
+    text-align: center;
+    font-size: xx-large;
+    padding: 10px;
+}
+
+.title{
+    text-align: center;
+
+    padding : 19px 0px 10px 5px;
+    font-size: x-large;
+
+}
+.text{
+    font-size: 35px;
+    font-weight: bolder;
+    padding-left: 28px;
+}

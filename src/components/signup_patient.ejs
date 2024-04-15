@@ -1,0 +1,54 @@
+<div class="d-flex form-group  align-items-center my-3">
+    <i class="fas fa-user form-label fa-lg me-3 fa-fw"></i>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" pattern="[a-zA-z\s]+"
+        required />
+</div>
+
+<div class="d-flex form-group align-items-center my-3">
+    <i class="fas fa-envelope form-label fa-lg me-3 fa-fw"></i>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email"
+        pattern="[a-z0-9]+(?:.)[a-z0-9]+@[a-z]+\.[a-z]+(?:\.[a-z]+)?" required />
+</div>
+
+<div class="d-flex form-group form-label align-items-center my-3">
+    <i class="fa-solid fa-phone me-3 fa-fw"></i>
+
+    <input type="tel" class="form-control" id="contact" name="contact" placeholder="Enter Your Contact No"
+        pattern="[6789][0-9]{9}" required />
+</div>
+
+<div class="d-flex  align-items-center my-3">
+    <div class="form-group  mx-5 ">
+        <label class="form-label fw-bold" for="gender">Gender</label>
+        <select class="form-select" id="gender" name="gender" required>
+            <option value="" selected>--Select--</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+    </div>
+
+    <div class="form-group   ">
+        <label for="age" class="form-label fw-bold">Age</label>
+        <input type="number" class="form-control" id="age" name="age" min="0" max="100" required />
+    </div>
+
+</div>
+
+<div class="d-flex form-group align-items-center my-3">
+    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+    <div class="form-outline  mb-0">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+    </div>
+</div>
+
+<div class="d-flex form-group align-items-center my-3">
+    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+    <div class="form-outline ">
+        <input type="text" class="form-control" id="conform_password" name="conform_password"
+            placeholder="Confirm Password" required />
+    </div>
+</div>
+
+<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+</div>

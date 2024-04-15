@@ -1,0 +1,39 @@
+.navbar>ul>li>a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Exo', sans-serif;
+}
+
+.header {
+    background-color: #f0f8ff;
+    /* AliceBlue */
+}
+
+.navbar>ul>.nav-item:hover {
+    border-bottom: 2px solid #1977cc;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: "Arial", sans-serif;
+}
+
+
+.login-header {
+    font-family: 'Exo';
+    font-size: 50px;
+    font-weight: 600;
+    color: #223a66;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.h-custom {
+    height: calc(100% - 200px);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}

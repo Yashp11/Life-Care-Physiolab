@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../src/components/head'); %>
+        <title>Dashbord</title>
+        <link rel="stylesheet" href="../stylesheets/dashbord.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+</head>
+
+<body>
+    <%- include('../src/components/nav')%>
+        <% if (isvalidrole==='doctor' ) { %>
+            <!-- Show doctor-specific content -->
+            <%- include('../src/components/dashbord_doctor')%>
+                <% } else { %>
+                    <!-- Show patient-specific content -->
+                    <%- include('../src/components/dashbord_patient')%>
+                        <% } %>
+
+                            <script>
+                                var isvalidrole = '<%=isvalidrole%>';
+                                var name = '<%=user.name%>';
+                                var id = '<%=user._id.toString()%>';
+                                //Patient Cancle Appointment
+                                function updatestatus(id, status) {
+                                    fetch(`/updatestatus?id=${id}&status=${status}`)
+                                        .then(window.location.reload());
+                                }
+                                var appointment_table = document.getElementById('appointment_table');
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    fetch(`/appointmentData?id=${id}&type=${isvalidrole}`)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (isvalidrole == 'doctor') {
+                                                let count = 0;
+                                                $(document).ready(function () {
+                                                    let datatable = $("#appointment_table").DataTable({
+                                                        paging: true,
+                                                        searching: true,
+                                                        data: [],
+                                                        columns: [
+                                                            { data: "sr_no" },
+                                                            { data: "patient_name" },
+                                                            { data: "date" },
+                                                            { data: "time" },
+                                                            { data: "contact" },
+                                                            { data: "btns" },
+                                                        ]
+                                                    });
+
+                                                    data.forEach(user => {
+                                                        count++;
+                                                        let btns;
+                                                        if (user.status === "Scheduled") {
+                                                            btns = `<select class="form-select" name="visit" id="visit" onchange="updatestatus(\`${user._id}\`,this.value)">
+                                                                        <option value="selected" selected>--Select--</option>
+                                                                        <option value="Visited">Visited</option>
+                                                                        <option value="Cancelled">Cancelled</option>
+                                                                </select>`;
+                                                        } else if (user.status === "Visited") {
+                                                            btns = ` <div class="Visited">Visited</div>`;
+                                                        } else {
+                                                            btns = ` <div class="Cancelled">Cancelled</div>`;
+                                                        }
+                                                        let appointment = {
+                                                            sr_no: count,
+                                                            patient_name: user.name,
+                                                            date: user.date.substring(0, 10),
+                                                            time: user.time,
+                                                            contact: user.contact,
+                                                            btns: btns,
+                                                        }
+                                                        datatable.row.add(appointment).draw();
+                                                    });
+                                                })
+
+                                            }
+                                            else {
+                                                let count = 0;
+                                                let btns;
+                                                $(document).ready(function () {
+                                                    let datatable = $("#appointment_table").DataTable({
+                                                        paging: true,
+                                                        searching: true,
+                                                        data: [],
+                                                        columns: [
+                                                            { data: "sr_no" },
+                                                            { data: "patient_name" },
+                                                            { data: "doctor_name" },
+                                                            { data: "date" },
+                                                            { data: "time" },
+                                                            { data: "btns" },
+                                                        ]
+                                                    })
+                                                    data.forEach(user => {
+                                                        count++;
+
+                                                        if (user.status === "Cancelled") {
+                                                            btns = ` <div class="Cancelled">Cancelled</div>`;
+                                                        } else if (user.status === "Visited") {
+                                                            btns = ` <div class="Visited">Visited</div>`;
+                                                        } else {
+                                                            btns = `<div class="texxt-center d-flex justify-content-center">
+                                                                        <button type=button class="btn btn-primary cancel-btn" onclick="updatestatus(\`${user._id}\`,'Cancelled')" id="\`${user._id}\`">Cancel</button>
+                                                                    </div>`;
+                                                        }
+                                                        let appointment = {
+                                                            sr_no: count,
+                                                            patient_name: user.name,
+                                                            doctor_name: user.doctor_name,
+                                                            date: user.date.substring(0, 10),
+                                                            time: user.time,
+                                                            btns: btns,
+                                                        }
+                                                        datatable.row.add(appointment).draw();
+                                                    });
+                                                })
+                                            }
+
+                                        });
+                                });
+                            </script>
+</body>
+
+</html>

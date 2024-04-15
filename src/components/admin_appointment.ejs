@@ -1,0 +1,66 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover text-center" id="appointment-table">
+        <thead>
+            <tr>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Doctor</th>
+                <th scope="col">Status</th>
+                <th scope="col">User Name</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% appointments.forEach(appointment=> { %>
+                <tr>
+                    <td>
+                        <%= appointment.name %>
+                    </td>
+                    <td>
+                        <%= appointment.date %>
+                    </td>
+                    <td>
+                        <%= appointment.time %>
+                    </td>
+                    <td>
+                        <%= appointment.doctor_name %>
+                    </td>
+                    <td>
+                        <select class="form-select form-select" name="" id="statusSelect<%= appointment._id %>"
+                            onchange="appo_update(`<%= appointment._id%>`)">
+                            <% if(appointment.status==="Visited" ){%>
+                                <option value="Scheduled">Scheduled</option>
+                                <option value="Visited" selected>
+                                    Visited
+                                </option>
+                                <option value="Cancelled">Cancelled</option>
+                                <%}else if(appointment.status==="Cancelled" ){%>
+                                    <option value="Scheduled">Scheduled</option>
+                                    <option value="Visited">Visited</option>
+                                    <option value="Cancelled" selected>
+                                        Cancelled
+                                    </option>
+                                    <%}else{%>
+                                        <option value="Scheduled" selected>
+                                            Scheduled
+                                        </option>
+                                        <option value="Visited">Visited</option>
+                                        <option value="Cancelled">Cancelled</option>
+                                        <%}%>
+                        </select>
+                    </td>
+                    <td>
+                        <%= appointment.user_id.name %>
+                    </td>
+                    <td class="d-flex justify-content-around">
+                        <button class="btn btn-primary me-3 "
+                            onclick="data_delete(`<%= appointment._id%>`,'appointment')">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+</div>

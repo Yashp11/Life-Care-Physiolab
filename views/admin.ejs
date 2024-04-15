@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../src/components/head'); %>
+        <title>Admin</title>
+        <link rel="stylesheet" href="./../stylesheets/admin.css" />
+</head>
+
+<body>
+    <div class="header text-center">Admin</div>
+    <div class="row dashbord">
+        <div class="col-lg-2">
+            <div class="d-flex flex-column justify-content-start align-ltems-center sidebar ">
+                <ul class="nav d-flex flex-column text-center ">
+                    <li class="nav-item">
+                        <a class="nav-link text-decoration-none text-dark " href="/admin">Dashbord</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-decoration-none text-dark" onclick="loadcontent('doctors')"
+                            href="#doctors">Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-decoration-none text-dark" onclick="loadcontent('patients')"
+                            href="#patients">Patients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-decoration-none text-dark" onclick="loadcontent('appointments')"
+                            href="#appointments">Appointments</a>
+                    </li>
+                </ul>
+                <form action="/logout" method="GET" class="text-center nav-item">
+                    <button type="submit" class="btn fw-bolder w-100">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div id="content">
+                <div class="row">
+                    <% const cardInfo=[ 
+                        { icon: "fas fa-user-md" , title: "Number Of Doctors" , value:number_of_doctors}, 
+                        { icon: "fa-solid fa-user" , title: "Number Of Patients" , value:number_of_patients }, 
+                        { icon: "fa-regular fa-calendar-check" , title: "Number Of Appointments" , value:number_of_appointments } 
+                    ]; %>
+
+                        <% cardInfo.forEach(card=> { %>
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="icon px-3"><i class="<%= card.icon %>"></i></div>
+                                        <h4 class="title">
+                                            <%= card.title %>
+                                        </h4>
+                                    </div>
+                                    <p class="text px-4">
+                                        <%= card.value %>
+                                    </p>
+                                </div>
+                            </div>
+                            <% }); %>
+                </div>
+                <div class="row pt-5">
+                    <% const appointmentTypes=[ 
+                            { icon: "fa-solid fa-check-to-slot" , title: "Visited Appointments",value: visited_appointments }, 
+                            { icon: "fa-solid fa-xmark" , title: "Cancelled Appointments",value: cancelled_appointments }, 
+                            { icon: "fa-solid fa-clock" , title: "Scheduled Appointments",value: scheduled_appointments }
+                        ]; %>
+
+                        <% appointmentTypes.forEach(appointment=> { %>
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="icon px-3"><i class="<%= appointment.icon %>"></i></div>
+                                        <h4 class="title">
+                                            <%= appointment.title %>
+                                        </h4>
+                                    </div>
+                                    <p class="text px-4">
+                                        <%= appointment.value %>
+                                    </p>
+                                </div>
+                            </div>
+                            <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadcontent(content) {
+            fetch(`/admin/${content}`)
+                .then((response) => response.text())
+                .then(html => {
+                    document.getElementById("content").innerHTML = html
+                    $(document).ready(function () {
+                        $('#appointment-table').DataTable();
+                    });
+                })
+                .catch(error => console.error("Error loading component:", error));
+        }
+
+        function data_delete(id, type) {
+            if (confirm("This Data will delete permentally!!!")) {
+                fetch(`/fetchData?id=${id}&type=${type}`).then(window.location.reload());
+            }
+        }
+        function appo_update(id) {
+            let status = document.getElementById(`statusSelect${id}`).value;
+            fetch(`/updatedata?id=${id}&status=${status}`).then(window.location.reload());
+        }
+    </script>
+</body>
+
+</html>

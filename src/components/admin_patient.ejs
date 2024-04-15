@@ -1,0 +1,43 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-striped text-center" id="appointment-table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contact No.</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Age</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% patients.forEach(patient=> { %>
+                <% if(patient.name!=="admin" ){%>
+                    <tr>
+                        <td>
+                            <%= patient.name %>
+                        </td>
+                        <td>
+                            <%= patient.email %>
+                        </td>
+                        <td>
+                            <%= patient.contact %>
+                        </td>
+                        <td>
+                            <%= patient.gender %>
+                        </td>
+                        <td>
+                            <%= patient.age %>
+                        </td>
+                        <td class="d-flex justify-content-around">
+                            <button class="btn btn-primary me-3 " onclick="data_delete(`<%= patient._id%>`,'patient')">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <% }; %>
+                        <% }); %>
+        </tbody>
+    </table>
+</div>

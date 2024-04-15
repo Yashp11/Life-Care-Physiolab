@@ -1,0 +1,53 @@
+.navbar > ul > li > a {
+  text-decoration: none;
+  color: black;
+  font-family: 'Exo',sans-serif;
+}
+.header {
+  background-color: #f0f8ff; /* AliceBlue */
+}
+
+.navbar > ul > .nav-item:hover {
+  border-bottom: 2px solid #1977cc;
+}
+
+.title-color {
+  color: #223a66;
+  font-family: 'Exo';
+  font-weight: 600;
+}
+
+.page{
+  padding : 25px 100px
+}
+
+.about-text{
+  color : #6F8BA4;
+}
+
+.divider-about{
+  width: 80px;
+  height: 5px;
+  background-color: #1977cc;
+}
+
+.award-img {
+  height: 120px;
+  margin-bottom: 10px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background: #eff0f3;
+}
+
+.carl-btn{
+  background-color: #3a5770!important;
+}
+
+.carl-text{
+  margin-bottom: 70px;
+}
+
+.section-title{
+  padding: 100px 0px 20px 0px;
+}

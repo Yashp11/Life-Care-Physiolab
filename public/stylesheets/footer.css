@@ -1,0 +1,124 @@
+.footer{
+  padding-top: 20px;
+  background-color: #d7dfe6;
+  position: relative;
+  bottom: 0;
+}
+
+.lh-35 {
+  line-height: 35px;
+}
+
+.logo {
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  margin-right: 100px;
+}
+
+.logo h3 {
+  color: #223a66;
+}
+
+.logo span {
+  color: #223a66;
+}
+
+.widget .divider {
+  height: 3px;
+}
+
+.widget h4 {
+  color: #223a66;
+}
+.widget p {
+  color: #223a66;
+  font-weight: 400 ;
+  padding-right: 100px;
+}
+
+.widget .footer-menu a {
+  font-weight: 500;
+  color: #223a66;
+}
+
+.widget .footer-menu a:hover {
+  color: #e12454;
+}
+
+.footer-contact-block span {
+  font-weight: 400;
+  color: #6f8ba4;
+}
+
+.footer-contact-block i {
+  font-size: 20px;
+}
+
+.footer-btm {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.footer-socials li a {
+  width: 45px;
+  height: 45px;
+  background: #6f8ba4;
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100%;
+  padding-top: 5px;
+}
+
+.widget-contact h6 {
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.widget-contact h6 i {
+  color: #e12454;
+}
+
+.subscribe {
+  position: relative;
+}
+
+.subscribe .form-control {
+  border-radius: 50px;
+  height: 60px;
+  padding-left: 25px;
+  border-color: #eee;
+}
+
+.subscribe .btn {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+}
+
+.divider {
+  width: 40px;
+  height: 5px;
+  background: #1977cc;
+}
+
+.copyright {
+  font-weight: 500;
+  color: #223a66;
+}
+
+.line {
+  background-color: #6f8ba4;
+  padding: 10px 0;
+}
+
+.container-fluid{
+  padding-right: 0px!important;
+  padding-left: 0px!important;
+}
+
+.footer-header{
+  font-family: 'Exo';
+  font-size: 30px;
+}

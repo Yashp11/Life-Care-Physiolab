@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../src/components/head'); %>
+        <link rel="stylesheet" href="/stylesheets/booking.css" />
+        <title>Book Appointment</title>
+</head>
+
+<body>
+
+    <section class="d-flex align-items-center" style="height: 90vh;">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h2>We Are Always Ready to Help You. <br>Book An Appointment <img
+                                src="../images/section-img.png" alt="#"></h2>
+                    </div>
+                    <form id="booking-form" method="post" action="/book">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" pattern="[a-zA-Z\s]+"
+                                placeholder="Enter your name" required />
+                                
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" pattern="[6789][0-9]{9}"
+                                placeholder="Enter your phone number" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Select Date : </label>
+                            <input type="date" name="date" id="date" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentTime">Select Appointment Time</label>
+                            <select class="form-control" id="appointmentTime" name="timezone" required>
+                                <option value="Morning">Morning</option>
+                                <option value="Afternoon">Afternoon</option>
+                                <option value="Evening">Evening</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="doctor">Select Doctor</label>
+                            <select class="form-control" id="doctor" name="doctor" required>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary submit">Book Appointment</button>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <div class="appointment-image ">
+                        <img src="../images/contact-img.png" class="img-fluid fw-bolder" alt="#">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const date_block = document.getElementById('date').setAttribute('min', new Date().toLocaleDateString('en-CA'));
+            const appointmentTimeSelect = document.getElementById('appointmentTime');
+            const appointmentDateSelect = document.getElementById('date');
+            const doctorSelect = document.getElementById('doctor');
+
+            appointmentDateSelect.addEventListener('change', function () {
+                appointmentTimeSelect.addEventListener('change', function () {
+                    const selectedTimezone = appointmentTimeSelect.value;
+                    const selectedDate = appointmentDateSelect.value;
+
+                    fetch(`/available-doctors?date=${selectedDate}&time=${selectedTimezone}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            doctorSelect.innerHTML = '<option value="">Select</option>';
+                            data.forEach(doctorName => {
+                                const option = document.createElement('option');
+                                option.text = doctorName;
+                                option.value = doctorName;
+                                doctorSelect.appendChild(option);
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching available doctors:', error);
+                        });
+                });
+
+            });
+        });
+    </script>
+</body>
+
+</html>

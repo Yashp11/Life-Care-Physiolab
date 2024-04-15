@@ -1,0 +1,45 @@
+.navbar>ul>li>a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Exo',sans-serif;
+}
+
+.header {
+    background-color: #f0f8ff;
+}
+
+.navbar>ul>.nav-item:hover {
+    border-bottom: 2px solid #1977cc;
+}
+
+.service-page {
+    padding: 90px 0;
+}
+
+.text-capitalize {
+    color: #223a66;
+    font-family: 'Exo';
+    font-weight: 500;
+    font-size: xx-large;
+}
+
+.service-header {
+    font-size: 25px;
+    margin: 10px 0px;
+    color: #223a66;
+}
+
+.icon {
+    font-size: 40px;
+    color: #6f8ba4;
+}
+
+.service-divider {
+    width: 80px;
+    height: 5px;
+    background: #1977cc;
+}
+
+.service-desc {
+    padding: 0px 12px 12px 0px;
+}

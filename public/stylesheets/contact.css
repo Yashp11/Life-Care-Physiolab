@@ -1,0 +1,68 @@
+
+.navbar > ul > li > a {
+  text-decoration: none;
+  color: black;
+  font-family: 'Exo',sans-serif;
+}
+
+.header {
+  background-color: #f0f8ff;
+}
+
+.navbar > ul > .nav-item:hover {
+  border-bottom: 2px solid #1977cc;
+}
+
+.title-header{
+  color: #223a66;
+  font-family: 'Exo';
+  font-weight: 600;
+}
+.contact-form-wrap .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form-wrap .form-group .form-control {
+  height: 60px;
+  border: 1px solid #EEF2F6;
+  box-shadow: none;
+  width: 100%;
+  background: #f4f9fc;
+}
+
+.contact-form-wrap .form-group-2 {
+  margin-bottom: 13px;
+}
+
+.contact-form-wrap .form-group-2 textarea {
+  height: auto;
+  border: 1px solid #EEF2F6;
+  box-shadow: none;
+  background: #f4f9fc;
+  width: 100%;
+}
+.contact-block {
+  margin: 20px 0px;
+  text-align: center;
+  border: 5px solid #EEF2F6; 
+  padding : 50px 25px;
+}
+
+.contact-block i {
+  font-size: 50px;
+  margin-bottom: 15px;
+  display: inline-block;
+  color: #e12454;
+}
+
+.btn-main {
+  background: #223a66;
+  color: #fff;
+  border-color: #223a66;
+  font-family: "Exo", sans-serif!important;
+}
+.btn-main:hover {
+  background: #e12454;
+  border-color: #e12454;
+  color: #fff;
+}
